@@ -9,7 +9,26 @@ namespace LibraryTerminal
 {
     public class FileManagement
     {
+        public static string GetPath()
+        {
+            string directory = Path.GetDirectoryName(Path.GetDirectoryName(Directory.GetCurrentDirectory()));
+            string path = Path.Combine(directory, "BookList.txt");
+            return path;
+        }
 
+        public static void ReadFile(string path)
+        {
+            string line;
+            using (var reader = new StreamReader(path))
+            {
+                do
+                {
+
+                    line = reader.ReadLine();
+                    Console.WriteLine(line);
+                } while (line != null);
+            }
+        }
         //read method 
         //write method
         //only deals with strings
