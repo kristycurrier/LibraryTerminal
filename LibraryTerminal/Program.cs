@@ -11,6 +11,14 @@ namespace LibraryTerminal
         static void Main(string[] args)
         {
 
+            Book firstBook = new Book("Title", "Author", true, DateTime.Parse("01/01/1900"));
+            Console.WriteLine(firstBook.Author);
+
+
+
+
+            Console.ReadLine();
+
         }
     }
 }

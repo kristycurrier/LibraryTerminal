@@ -46,6 +46,8 @@
     <Compile Include="Book.cs" />
     <Compile Include="BookApp.cs" />
     <Compile Include="FileManagement.cs" />
+    <Compile Include="ParseBookConstructor.cs" />
+    <Compile Include="ParseFile.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
