@@ -22,6 +22,7 @@ namespace LibraryTerminal
 
             FileManagement.WriteFile(listOfStrings, path);
 
+
             Console.ReadLine();
 
         }
