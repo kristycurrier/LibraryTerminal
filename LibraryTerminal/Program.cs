@@ -11,18 +11,16 @@ namespace LibraryTerminal
     {
         static void Main(string[] args)
         {
+            string path = FileManagement.GetPath();
 
-            Book firstBook = new Book("Title", "Author", true, DateTime.Parse("01/01/1900"));
-            Console.WriteLine(firstBook.Author);
+            List<string> listOfStrings = FileManagement.ReadFile(path);
 
-            //string text = File.ReadAllText(FileManagement.GetPath());
-            string text2 = FileManagement.GetPath();
-            FileManagement.ReadFile(text2);
+            foreach(var book in listOfStrings)
+            {
+                Console.WriteLine(book);
+            }
 
-            //Console.WriteLine(text);
-            //Console.WriteLine(text2);
-
-
+            FileManagement.WriteFile(listOfStrings, path);
 
             Console.ReadLine();
 
