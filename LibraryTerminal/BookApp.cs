@@ -10,7 +10,7 @@ namespace LibraryTerminal
     {
         //functions will go here
 
-        //parse strings into constructor
+      
         //method create list of Book objects
         //from constructor into lines to write
         public static void DisplayBooks(List<Book> listOfBooks)
