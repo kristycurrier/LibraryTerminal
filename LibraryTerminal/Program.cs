@@ -19,10 +19,8 @@ namespace LibraryTerminal
             {
                 Console.WriteLine(book);
             }
-            listOfStrings.Add("teal");
 
             FileManagement.WriteFile(listOfStrings, path);
-
 
             Console.ReadLine();
 
