@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.IO;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -10,11 +11,17 @@ namespace LibraryTerminal
     {
         static void Main(string[] args)
         {
+            string path = FileManagement.GetPath();
 
-            Book firstBook = new Book("Title", "Author", true, DateTime.Parse("01/01/1900"));
-            Console.WriteLine(firstBook.Author);
+            List<string> listOfStrings = FileManagement.ReadFile(path);
 
+            foreach(var book in listOfStrings)
+            {
+                Console.WriteLine(book);
+            }
+            listOfStrings.Add("teal");
 
+            FileManagement.WriteFile(listOfStrings, path);
 
 
             Console.ReadLine();
