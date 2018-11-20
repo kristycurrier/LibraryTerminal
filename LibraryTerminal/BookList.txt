@@ -1,5 +1,3 @@
-red
-green
-blue
-meow
-meow
+title_author_onShelf_duedate
+Pride and Prejudice_Jane Austen_true_01/01/1900
+A Brief History Of Time_Stephen Hawking_true_01/01/1900
