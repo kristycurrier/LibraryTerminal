@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace LibraryTerminal
 {
-    public abstract class Book
+    public class Book
     { 
         public string Title { get; set; }
         public string Author { get; set; }
