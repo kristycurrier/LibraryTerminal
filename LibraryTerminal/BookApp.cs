@@ -34,5 +34,20 @@ namespace LibraryTerminal
             return bookSelection;
         }
 
+        public static Book FindBookByTitle(List<Book> listOfBooks, string userInput)
+        {
+            Book bookSelection = new Book("", "", true, DateTime.Now);
+
+            foreach (var book in listOfBooks)
+            {
+                if (book.Title == userInput)
+                {
+                    bookSelection = book;
+                    break;
+                }
+            }
+            return bookSelection;
+        }
+
     }
 }
