@@ -17,12 +17,12 @@ namespace LibraryTerminal
 
             List<string> listOfStrings = FileManagement.ReadFile(path);
 
-            foreach (var book in listOfStrings)
-            {
-                Console.WriteLine(book);
-            }
+            List<Book> bookList = ParseBookConstructor.ConvertToBook(listOfStrings);
 
-            FileManagement.WriteFile(listOfStrings, path);
+            BookApp.DisplayBooks(bookList);
+            //Book book = BookApp.FindBookByAuthor(bookList, "Jane Austen");
+            //Console.WriteLine(book.Title);
+            //FileManagement.WriteFile(listOfStrings, path);
 
             Console.ReadLine();
         }

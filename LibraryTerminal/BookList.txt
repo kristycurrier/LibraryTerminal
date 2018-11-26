@@ -6,4 +6,9 @@ Slaughterhouse 5_Kurt Vonnegut_true_01/01/1900
 Fahrenheit 451_Ray Bradbury_true_01/01/1900
 It_Stephen King_true_01/01/1900
 Les Miserables_Victor Hugo_false_11/29/2018
-Heart of Darkness_Joseph Conrad_true_01/01/1900 
+Heart of Darkness_Joseph Conrad_true_01/01/1900
+Moby Dick_Herman Melville_false_12/03/2018
+Hamlet_William Shakespeare_true_01/01/1900
+War and Peace_Leo Tolstoy_true_01/01/1900
+Harry Potter_J.K. Rowling_true_01/01/1900
+Wuthering Heights_Emily Bronte_true_01/01/1900
