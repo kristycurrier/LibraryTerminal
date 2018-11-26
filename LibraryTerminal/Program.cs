@@ -4,6 +4,7 @@ using System.Linq;
 using System.IO;
 using System.Text;
 using System.Threading.Tasks;
+using System.Globalization;
 
 namespace LibraryTerminal
 {
@@ -11,12 +12,12 @@ namespace LibraryTerminal
     {
         static void Main(string[] args)
         {
-                      
+
             string path = FileManagement.GetPath();
 
             List<string> listOfStrings = FileManagement.ReadFile(path);
 
-            foreach(var book in listOfStrings)
+            foreach (var book in listOfStrings)
             {
                 Console.WriteLine(book);
             }
