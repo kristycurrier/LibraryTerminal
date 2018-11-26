@@ -6,79 +6,55 @@ using System.Threading.Tasks;
 
 namespace LibraryTerminal
 {
-    class ParseFile : Book
+    public class ParseFile
     {
-        public ParseFile(string title, string author, bool status, DateTime dueDate) : base(title, author, status, dueDate)
+        public static List<Book> ConvertToBook(List<string> bookListString)
         {
-            title = GetBookTitle();
-            author = GetBookAuthor();
-            status = GetBookStatus();
-            dueDate = GetBookDueDate();
+            List<Book> bookList = new List<Book>();
+            foreach (var item in bookListString)
+            {
+                var book = new Book(GetBookTitle(item), GetBookAuthor(item), GetBookStatus(item), GetBookDueDate(item));
+                bookList.Add(book);
+            }
 
-            Console.WriteLine(title, author, status, dueDate);
-            Console.ReadLine();
-
+            return bookList;
         }
-        
-        //public static List<Book> ConvertToBook(List<string> bookListString)
-        //{
 
-
-
-
-        //    List<string> convertToBook = new List<string>();
-        //    convertToBook.Add(GetBookTitle());
-        //    convertToBook.Add(GetBookAuthor());
-        //    convertToBook.Add(Convert.ToString(GetBookStatus()));
-        //    convertToBook.Add(Convert.ToString(GetBookTitle()));
-
-        //    foreach (var section in convertToBook)
-        //    {
-        //    }
-
-        //}
-
-
-        public static string GetBookTitle()
+        public static string GetBookTitle(string bookEntry)
         {
             char[] separator = { '_' };
-            string str = "The Shining_Stephen King_True_01/06/1988";
+            string str = bookEntry;
             string[] _title = str.Split(separator);
             string title = _title[0];
-            Console.WriteLine(title);
             return title;
         }
 
-        public static string GetBookAuthor()
+        public static string GetBookAuthor(string bookEntry)
         {
             char[] separator = { '_' };
-            string str = "The Shining_Stephen King_True_01/06/1988";
+            string str = bookEntry;
             string[] _author = str.Split(separator);
             string author = _author[1];
-
             return author;
 
         }
 
-        public static bool GetBookStatus()
+        public static bool GetBookStatus(string bookEntry)
         {
             char[] separator = { '_' };
-            string str = "The Shining_Stephen King_True_01/06/1988";
+            string str = bookEntry;
             string[] _status = str.Split(separator);
             bool status = Convert.ToBoolean(_status[2]);
-
             return status;
         }
 
-        public static DateTime GetBookDueDate()
+        public static DateTime GetBookDueDate(string bookEntry)
         {
             char[] separator = { '_' };
-            string str = "The Shining_Stephen King_True_01/06/1988";
+            string str = Convert.ToString(bookEntry);
             string[] _dueDate = str.Split(separator);
             DateTime dueDate = Convert.ToDateTime(_dueDate[3]);
-
             return dueDate;
         }
-
     }
 }

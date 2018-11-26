@@ -1,8 +1,7 @@
-title_author_onShelf_duedate
 Pride and Prejudice_Jane Austen_true_01/01/1900
 A Brief History Of Time_Stephen Hawking_true_01/01/1900
 The Iliad_Homer_false_11/24/2018
-The Man in the High Castle_Philip K. Dick_false_11/31/2018
+The Man in the High Castle_Philip K. Dick_false_11/10/2018
 Slaughterhouse 5_Kurt Vonnegut_true_01/01/1900
 Fahrenheit 451_Ray Bradbury_true_01/01/1900
 It_Stephen King_true_01/01/1900
