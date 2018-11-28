@@ -12,11 +12,8 @@ namespace LibraryTerminal
     {
         static void Main(string[] args)
         {
-
             string path = FileManagement.GetPath();
-
             List<string> listOfStrings = FileManagement.ReadFile(path);
-
             Dictionary<int, Book> bookList = ParseBookConstructor.ConvertToBook(listOfStrings);
 
             bool keepGoing = true;
@@ -24,10 +21,11 @@ namespace LibraryTerminal
             while (keepGoing == true)
             {
                 BookApp.PrintMenu();
-                //BookApp.DisplayBooks(bookList);
+
                 int menuChoice = int.Parse(Console.ReadLine());
                 int bookKey;
                 string userInput;
+
                 switch (menuChoice)
                 {
                     case 1:                                                             //Display book list
@@ -89,6 +87,7 @@ namespace LibraryTerminal
 
                 keepGoing = BookApp.ContinueTheProgram();
             }
+
             listOfStrings = FileManagement.CreateListFromDictonary(bookList);
             FileManagement.WriteFile(listOfStrings, path);
 
