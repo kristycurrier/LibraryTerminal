@@ -89,6 +89,7 @@ namespace LibraryTerminal
 
                 keepGoing = BookApp.ContinueTheProgram();
             }
+            listOfStrings = FileManagement.CreateListFromDictonary(bookList);
             FileManagement.WriteFile(listOfStrings, path);
 
             Console.ReadLine();

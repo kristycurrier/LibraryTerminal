@@ -37,6 +37,17 @@ namespace LibraryTerminal
             return libraryCollection;
         }
 
+        public static List<string> CreateListFromDictonary(Dictionary<int, Book> libraryDictonary)
+        {
+            List<string> libraryList = new List<string>();
+            foreach (var book in libraryDictonary)
+            {
+                string line = book.Value.Title + "_" + book.Value.Author + "_" + book.Value.Status.ToString() + "_" + book.Value.DueDate.ToShortDateString();
+                libraryList.Add(line);
+            }
+            return libraryList;
+        }
+
         public static void WriteFile(List<string> libraryList, string path)
         {
             File.WriteAllLines(path, libraryList);
