@@ -14,7 +14,7 @@ namespace LibraryTerminal
         {
             string path = FileManagement.GetPath();
             List<string> listOfStrings = FileManagement.ReadFile(path);
-            Dictionary<int, Book> bookList = ParseBookConstructor.ConvertToBook(listOfStrings);
+            Dictionary<int, Book> bookList = ParseFile.ConvertToBook(listOfStrings);
 
             bool keepGoing = true;
 
@@ -22,7 +22,7 @@ namespace LibraryTerminal
             {
                 BookApp.PrintMenu();
 
-                int menuChoice = int.Parse(Console.ReadLine());
+                int menuChoice = Validator.MenuChoice();
                 int bookKey;
                 string userInput;
 
@@ -44,7 +44,7 @@ namespace LibraryTerminal
                         break;
                     case 4:                                                             //check out book
                         Console.WriteLine("How would you like to search for a book to check out? (title or author)");
-                        userInput = Console.ReadLine();
+                        userInput = Validator.DetermineTitleOrAuthor();
                         if (userInput == "title")
                         {
                             Console.Write("Enter title of the book: ");
@@ -63,7 +63,7 @@ namespace LibraryTerminal
                         break;
                     case 5:                                                             //return book
                         Console.WriteLine("How would you like to search for a book to return? (title or author)");
-                        userInput = Console.ReadLine();
+                        userInput = Validator.DetermineTitleOrAuthor();
                         if (userInput == "title")
                         {
                             Console.Write("Enter title of the book: ");
