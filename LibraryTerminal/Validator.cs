@@ -90,7 +90,7 @@ namespace LibraryTerminal
 
             foreach (var book in listOfBooks)
             {
-                if (book.Value.Title.Equals(userInput, StringComparison.OrdinalIgnoreCase))
+                if (book.Value.Author.Equals(userInput, StringComparison.OrdinalIgnoreCase))
                 {
                     validBookAuthor = true;
                     break;
@@ -105,6 +105,31 @@ namespace LibraryTerminal
                 Console.WriteLine("That author is not in our collection.");
             }
             return validBookAuthor;
+        }
+
+        public static bool YesNoAnswer()
+        {
+            bool keepGoing = true;
+            bool validInput = false;
+            string userInput = Console.ReadLine();
+            while (validInput == false)
+            {
+                if (userInput == "y")
+                {
+                    keepGoing = true;
+                    validInput = true;
+                }
+                else if (userInput == "n")
+                {
+                    keepGoing = false;
+                    validInput = true;
+                }
+                else {
+                    Console.Write("Enter y for yes or n for no: ");
+                    userInput = Console.ReadLine();
+                }
+            }
+            return keepGoing;
         }
     }
 }
