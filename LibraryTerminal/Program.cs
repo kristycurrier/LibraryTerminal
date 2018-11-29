@@ -40,6 +40,7 @@ namespace LibraryTerminal
                     case 3:                                                             //Search by title
                         Console.Write("Enter title of the book: ");
                         userInput = Console.ReadLine();
+                        bool validTitle = Validator.BookTitleValidator(bookList, userInput);
                         bookKey = BookApp.FindBookByTitle(bookList, userInput);
                         break;
                     case 4:                                                             //check out book
