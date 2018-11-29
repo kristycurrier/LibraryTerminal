@@ -8,9 +8,22 @@ namespace LibraryTerminal
 {
     public class BookApp
     {
+        public static Dictionary<int, Book> CheckInBooks(Dictionary<int, Book> listOfBooks)
+        {
+            foreach (var book in listOfBooks)
+            {
+                if(book.Value.DueDate <= DateTime.Now)
+                {
+                    book.Value.Status = true;
+                    book.Value.DueDate = Convert.ToDateTime("01/01/1900");
+                }
+            }
+            return listOfBooks;
+        }
+
         public static void DisplayBooks(Dictionary<int,Book> listOfBooks)
         {
-            Console.WriteLine("List of books: ");
+            Console.WriteLine("");
             Console.Write("{0,-30} {1,-20} {2,-10} {3,-10}\n", "Title", "Author", "On Shelf", "Due Date");
             Console.Write("{0,-30} {0,-20} {0,-10} {0,-10}\n", "-----");
 
@@ -20,9 +33,17 @@ namespace LibraryTerminal
             }
         }
 
-        public static void DisplayBook(Dictionary<int, Book> listOfBooks, int keyNum)
+        public static bool DisplayBook(Dictionary<int, Book> listOfBooks, int keyNum)
         {
-            Console.WriteLine("{0,-30} {1,-20} {2,-10} {3,-10}", listOfBooks[keyNum].Title, listOfBooks[keyNum].Author, listOfBooks[keyNum].Status, listOfBooks[keyNum].DueDate.ToString("d"));
+            if (listOfBooks[keyNum].Status == true)
+            {
+                Console.WriteLine("{0,-30} {1,-20} {2,-10}", listOfBooks[keyNum].Title, listOfBooks[keyNum].Author, "On shelf");
+            }
+            else
+            {
+                Console.WriteLine("{0,-30} {1,-20} {2,-15} {3,-10}", listOfBooks[keyNum].Title, listOfBooks[keyNum].Author, "Checked out", "Due Date: " + listOfBooks[keyNum].DueDate.ToString("d"));
+            }
+            return listOfBooks[keyNum].Status;
         }
 
         public static void PrintMenu()
@@ -71,6 +92,7 @@ namespace LibraryTerminal
             bookList[bookNum].Status = false;
             DateTime today = DateTime.Now.Date;
             bookList[bookNum].DueDate = today.AddDays(14);
+            Console.WriteLine($"You checked out {bookList[bookNum].Title}.");
             return bookList;
         }
 
@@ -78,22 +100,16 @@ namespace LibraryTerminal
         {
             bookList[bookNum].Status = true;
             bookList[bookNum].DueDate = Convert.ToDateTime("01/01/1900");
+            Console.WriteLine($"You returned {bookList[bookNum].Title}.");
             return bookList;
         }
 
         public static bool ContinueTheProgram()
         {
             bool keepGoing = true;
-            Console.WriteLine("Would you like to continue the program? (y/n)");
-            string userInput = Console.ReadLine();
-            if(userInput == "y")
-            {
-                keepGoing = true;
-            }else if (userInput == "n")
-            {
-                keepGoing = false;
-            }
-            else { }
+            Console.Write("\nWould you like to continue the program? (y/n) ");
+            keepGoing = Validator.YesNoAnswer();
+            Console.WriteLine("");
             return keepGoing;
         }
     }
