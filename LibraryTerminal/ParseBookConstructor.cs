@@ -8,7 +8,7 @@ namespace LibraryTerminal
 {
     public class ParseBookConstructor
     {
-   
+
 
     }
 }
