@@ -12,7 +12,7 @@ namespace LibraryTerminal
         {
             foreach (var book in listOfBooks)
             {
-                if(book.Value.DueDate <= DateTime.Now)
+                if (book.Value.DueDate <= DateTime.Now)
                 {
                     book.Value.Status = true;
                     book.Value.DueDate = Convert.ToDateTime("01/01/1900");
@@ -21,7 +21,7 @@ namespace LibraryTerminal
             return listOfBooks;
         }
 
-        public static void DisplayBooks(Dictionary<int,Book> listOfBooks)
+        public static void DisplayBooks(Dictionary<int, Book> listOfBooks)
         {
             Console.WriteLine("");
             Console.Write("{0,-30} {1,-20} {2,-10} {3,-10}\n", "Title", "Author", "On Shelf", "Due Date");
@@ -29,7 +29,14 @@ namespace LibraryTerminal
 
             foreach (var book in listOfBooks)
             {
-                Console.WriteLine("{0,-30} {1,-20} {2,-10} {3,-10}", book.Value.Title, book.Value.Author, book.Value.Status, book.Value.DueDate.ToString("d"));
+                if (book.Value.DueDate == Convert.ToDateTime("01/01/1900"))
+                {
+                    Console.WriteLine("{0,-30} {1,-20} {2,-10}", book.Value.Title, book.Value.Author, book.Value.Status);
+                }
+                else
+                {
+                    Console.WriteLine("{0,-30} {1,-20} {2,-10} {3,-10}", book.Value.Title, book.Value.Author, book.Value.Status, book.Value.DueDate.ToString("d"));
+                }
             }
         }
 
@@ -57,7 +64,7 @@ namespace LibraryTerminal
             Console.Write("Selection: ");
         }
 
-        public static int FindBookByAuthor(Dictionary<int, Book> listOfBooks,string userInput)
+        public static int FindBookByAuthor(Dictionary<int, Book> listOfBooks, string userInput)
         {
             int bookSelection = 0;
 
@@ -72,7 +79,7 @@ namespace LibraryTerminal
             return bookSelection;
         }
 
-        public static int FindBookByTitle(Dictionary<int,Book> listOfBooks, string userInput)
+        public static int FindBookByTitle(Dictionary<int, Book> listOfBooks, string userInput)
         {
             int bookSelection = 0;
 
@@ -87,7 +94,7 @@ namespace LibraryTerminal
             return bookSelection;
         }
 
-        public static Dictionary<int, Book> CheckOutBook(Dictionary<int,Book> bookList, int bookNum)
+        public static Dictionary<int, Book> CheckOutBook(Dictionary<int, Book> bookList, int bookNum)
         {
             bookList[bookNum].Status = false;
             DateTime today = DateTime.Now.Date;
@@ -98,9 +105,16 @@ namespace LibraryTerminal
 
         public static Dictionary<int, Book> ReturnBook(Dictionary<int, Book> bookList, int bookNum)
         {
-            bookList[bookNum].Status = true;
-            bookList[bookNum].DueDate = Convert.ToDateTime("01/01/1900");
-            Console.WriteLine($"You returned {bookList[bookNum].Title}.");
+            if (bookList[bookNum].DueDate != Convert.ToDateTime("01/01/1900"))
+            {
+                bookList[bookNum].Status = true;
+                bookList[bookNum].DueDate = Convert.ToDateTime("01/01/1900");
+                Console.WriteLine($"You returned {bookList[bookNum].Title}.");
+            }
+            else
+            {
+                Console.WriteLine("That book is already on the shelf.");
+            }
             return bookList;
         }
 
