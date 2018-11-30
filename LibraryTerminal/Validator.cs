@@ -49,7 +49,7 @@ namespace LibraryTerminal
             while (validNumber == false)
             {
                 bool realNumber = int.TryParse(menuChoice, out menuNum);
-                if (realNumber == true && menuNum < 6 && menuNum > 0)
+                if (realNumber == true && menuNum < 7 && menuNum > 0)
                 {
                     validNumber = true;
                     break;
