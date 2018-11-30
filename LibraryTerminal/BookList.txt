@@ -1,14 +1,14 @@
-Pride and Prejudice_Jane Austen_False_12/12/2018
+Pride and Prejudice_Jane Austen_False_12/13/2018
 A Brief History Of Time_Stephen Hawking_True_1/1/1900
 The Iliad_Homer_True_1/1/1900
 The Man in the High Castle_Philip K. Dick_True_1/1/1900
 Slaughterhouse 5_Kurt Vonnegut_True_1/1/1900
 Fahrenheit 451_Ray Bradbury_True_1/1/1900
 It_Stephen King_True_1/1/1900
-Les Miserables_Victor Hugo_False_11/29/2018
+Les Miserables_Victor Hugo_True_1/1/1900
 Heart of Darkness_Joseph Conrad_True_1/1/1900
 Moby Dick_Herman Melville_False_12/3/2018
 Hamlet_William Shakespeare_True_1/1/1900
 War and Peace_Leo Tolstoy_False_12/12/2018
-Harry Potter_J.K. Rowling_False_12/12/2018
+Harry Potter_J.K. Rowling_True_1/1/1900
 Wuthering Heights_Emily Bronte_True_1/1/1900
