@@ -43,6 +43,9 @@ namespace LibraryTerminal
                         bookList = ProgramApp.ReturnBook(bookList);
                         break;
                     case 6:
+                        bookList = ProgramApp.AddBook(bookList);
+                        break;
+                    case 7:
                         ProgramApp.EasterEgg();
                         break;
                     default:
