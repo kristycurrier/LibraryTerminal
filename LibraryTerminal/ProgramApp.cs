@@ -127,10 +127,22 @@ namespace LibraryTerminal
             return bookList;
         }
 
-        //public static Dictionary<int, Book> AddBook(Dictionary<int, Book> bookList)
-        //{
-        //    Console.WriteLine("")
-        //}
+        public static Dictionary<int, Book> AddBook(Dictionary<int, Book> bookList)
+        {
+            string newBookTitle;
+            string newBookAuthor ;
+
+            Console.Write("Enter title: ");
+            newBookTitle = Validator.NewBookTitleValidator();
+
+            Console.Write("Enter author: ");
+            newBookAuthor = Validator.NewBookAuthorValidator();
+
+            Book newBook = new Book(newBookTitle, newBookAuthor, true, Convert.ToDateTime("01/01/1900"));
+            bookList.Add(bookList.Count+1, newBook);
+
+            return bookList;
+        }
 
         public static void EasterEgg()
         {

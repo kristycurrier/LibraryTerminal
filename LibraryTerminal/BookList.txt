@@ -12,3 +12,4 @@ Hamlet_William Shakespeare_True_1/1/1900
 War and Peace_Leo Tolstoy_False_12/12/2018
 Harry Potter_J.K. Rowling_False_12/13/2018
 Wuthering Heights_Emily Bronte_True_1/1/1900
+The Time Machine_H.G Wells_True_1/1/1900

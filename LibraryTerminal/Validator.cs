@@ -49,12 +49,12 @@ namespace LibraryTerminal
             while (validNumber == false)
             {
                 bool realNumber = int.TryParse(menuChoice, out menuNum);
-                if (realNumber == true && menuNum < 7 && menuNum > 0)
+                if (realNumber == true && menuNum < 8 && menuNum > 0)
                 {
                     validNumber = true;
                     break;
                 }
-                Console.Write("Sorry, that is not a valid menu choice.  Please enter 1-5: ");
+                Console.Write("Sorry, that is not a valid menu choice.  Please enter 1-6 (DEFINITELY NOT 7): ");
                 menuChoice = Console.ReadLine();
             }
             return menuNum;
@@ -114,12 +114,12 @@ namespace LibraryTerminal
             string userInput = Console.ReadLine();
             while (validInput == false)
             {
-                if (userInput == "y")
+                if (userInput.Equals("y", StringComparison.OrdinalIgnoreCase))
                 {
                     keepGoing = true;
                     validInput = true;
                 }
-                else if (userInput == "n")
+                else if (userInput.Equals("n", StringComparison.OrdinalIgnoreCase))
                 {
                     keepGoing = false;
                     validInput = true;
@@ -131,5 +131,50 @@ namespace LibraryTerminal
             }
             return keepGoing;
         }
+
+        public static string NewBookTitleValidator()
+        {
+            bool validNewBookTitle = false;
+            string userInput = Console.ReadLine();
+
+            while (validNewBookTitle == false)
+            {
+                if (userInput.Length == 0)
+                {
+                    validNewBookTitle = false;
+                }
+                else
+                {
+                    validNewBookTitle = true;
+                    break;
+                }
+                Console.Write("Sorry not a valid title, please enter a valid title: ");
+                userInput = Console.ReadLine();
+            }
+                return userInput;
+        }
+
+        public static string NewBookAuthorValidator()
+        {
+            bool validNewBookAuthor = false;
+            string userInput = Console.ReadLine();
+
+            while (validNewBookAuthor == false)
+            {
+                if (userInput.Length == 0)
+                {
+                    validNewBookAuthor = false;
+                }
+                else
+                {
+                    validNewBookAuthor = true;
+                    break;
+                }
+                Console.Write("Sorry not a valid author, please enter a valid author: ");
+                userInput = Console.ReadLine();
+            }
+            return userInput;
+        }
+
     }
 }
