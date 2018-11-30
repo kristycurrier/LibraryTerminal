@@ -15,6 +15,7 @@ namespace LibraryTerminal
             string path = FileManagement.GetPath();
             List<string> listOfStrings = FileManagement.ReadFile(path);
             Dictionary<int, Book> bookList = ParseFile.ConvertToBook(listOfStrings);
+            bookList = BookApp.CheckInBooks(bookList);
 
             bool keepGoing = true;
 
@@ -22,10 +23,12 @@ namespace LibraryTerminal
             {
                 BookApp.PrintMenu();
 
-                int menuChoice = int.Parse(Console.ReadLine());
+                int menuChoice = Validator.MenuChoice();
                 int bookKey;
                 string userInput;
-
+                bool validAuthor;
+                bool validTitle;
+                bool onShelf;
                 switch (menuChoice)
                 {
                     case 1:                                                             //Display book list
@@ -34,37 +37,69 @@ namespace LibraryTerminal
                     case 2:                                                             //Search by author name
                         Console.Write("Enter author name: ");
                         userInput = Console.ReadLine();
-                        bookKey = BookApp.FindBookByAuthor(bookList, userInput);
-                        BookApp.DisplayBook(bookList, bookKey);
+                        validAuthor = Validator.BookAuthorValidator(bookList, userInput);
+                        if (validAuthor == true)
+                        {
+                            bookKey = BookApp.FindBookByAuthor(bookList, userInput);
+                            onShelf = BookApp.DisplayBook(bookList, bookKey);
+                            if (onShelf)
+                            {
+                                Console.WriteLine("Would you like to check that book out? (y/n)");
+                                if (Validator.YesNoAnswer())
+                                {
+                                    bookList = BookApp.CheckOutBook(bookList, bookKey);
+                                }
+                            }
+                        }
+
                         break;
                     case 3:                                                             //Search by title
                         Console.Write("Enter title of the book: ");
                         userInput = Console.ReadLine();
-                        bool validTitle = Validator.BookTitleValidator(bookList, userInput);
-                        bookKey = BookApp.FindBookByTitle(bookList, userInput);
+                        validTitle = Validator.BookTitleValidator(bookList, userInput);
+                        if (validTitle == true)
+                        {
+                            bookKey = BookApp.FindBookByTitle(bookList, userInput);
+                            onShelf = BookApp.DisplayBook(bookList, bookKey);
+                            if (onShelf)
+                            {
+                                Console.WriteLine("Would you like to check that book out? (y/n)");
+                                if (Validator.YesNoAnswer())
+                                {
+                                    bookList = BookApp.CheckOutBook(bookList, bookKey);
+                                }
+                            }
+                        }
                         break;
                     case 4:                                                             //check out book
                         Console.WriteLine("How would you like to search for a book to check out? (title or author)");
-                        userInput = Console.ReadLine();
+                        userInput = Validator.DetermineTitleOrAuthor();
                         if (userInput == "title")
                         {
                             Console.Write("Enter title of the book: ");
                             userInput = Console.ReadLine();
-                            bookKey = BookApp.FindBookByTitle(bookList, userInput);
-                            bookList = BookApp.CheckOutBook(bookList, bookKey);
+                            if (validTitle = Validator.BookTitleValidator(bookList, userInput))
+                            {
+                                bookKey = BookApp.FindBookByTitle(bookList, userInput);
+                                bookList = BookApp.CheckOutBook(bookList, bookKey);
+                            }
                         }
                         else if (userInput == "author")
                         {
                             Console.Write("Enter author name: ");
                             userInput = Console.ReadLine();
+                            if(validAuthor = Validator.BookAuthorValidator(bookList, userInput))
+                            {
                             bookKey = BookApp.FindBookByAuthor(bookList, userInput);
                             bookList = BookApp.CheckOutBook(bookList, bookKey);
+                            }
+
                         }
                         else { Console.WriteLine("Sorry, not valid"); }
                         break;
                     case 5:                                                             //return book
                         Console.WriteLine("How would you like to search for a book to return? (title or author)");
-                        userInput = Console.ReadLine();
+                        userInput = Validator.DetermineTitleOrAuthor();
                         if (userInput == "title")
                         {
                             Console.Write("Enter title of the book: ");
