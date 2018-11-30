@@ -138,9 +138,19 @@ namespace LibraryTerminal
             Console.Write("Enter author: ");
             newBookAuthor = Validator.NewBookAuthorValidator();
 
-            Book newBook = new Book(newBookTitle, newBookAuthor, true, Convert.ToDateTime("01/01/1900"));
-            bookList.Add(bookList.Count+1, newBook);
+            Console.WriteLine("Are you sure you want to add this book to the library? (y/n)");
+            bool yesAnswer = Validator.YesNoAnswer();
+            if (yesAnswer == true)
+            {
+                Console.WriteLine($"You've added {newBookTitle} by {newBookAuthor}");
+                Book newBook = new Book(newBookTitle, newBookAuthor, true, Convert.ToDateTime("01/01/1900"));
+                bookList.Add(bookList.Count + 1, newBook);
 
+            }
+            else
+            {
+                Console.WriteLine("No prob, please consider donating to the library at another time");
+            }
             return bookList;
         }
 
