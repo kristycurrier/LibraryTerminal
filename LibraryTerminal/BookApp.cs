@@ -60,6 +60,7 @@ namespace LibraryTerminal
             Console.WriteLine("3. Search library by title of book.");
             Console.WriteLine("4. Check out a book.");
             Console.WriteLine("5. Return a book");
+            Console.WriteLine("6. Add a book");
             Console.Write("Selection: ");
         }
 
@@ -69,7 +70,7 @@ namespace LibraryTerminal
 
             foreach (var book in listOfBooks)
             {
-                if (book.Value.Author == userInput)
+                if (book.Value.Author.Equals(userInput, StringComparison.OrdinalIgnoreCase))
                 {
                     bookSelection = book.Key;
                     break;
@@ -84,7 +85,7 @@ namespace LibraryTerminal
 
             foreach (var book in listOfBooks)
             {
-                if (book.Value.Title == userInput)
+                if (book.Value.Title.Equals(userInput, StringComparison.OrdinalIgnoreCase))
                 {
                     bookSelection = book.Key;
                     break;
