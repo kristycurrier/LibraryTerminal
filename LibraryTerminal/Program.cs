@@ -51,6 +51,7 @@ namespace LibraryTerminal
                 }
 
                 keepGoing = BookApp.ContinueTheProgram();
+                Console.Clear();
             }
 
             listOfStrings = FileManagement.CreateListFromDictonary(bookList);

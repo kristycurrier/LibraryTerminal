@@ -64,7 +64,14 @@ namespace LibraryTerminal
                 if (validTitle = Validator.BookTitleValidator(bookList, userInput))
                 {
                     int bookKey = BookApp.FindBookByTitle(bookList, userInput);
-                    bookList = BookApp.CheckOutBook(bookList, bookKey);
+                    if (bookList[bookKey].Status == true)
+                    {
+                        bookList = BookApp.CheckOutBook(bookList, bookKey);
+                    }
+                    else
+                    {
+                        Console.WriteLine("Sorry, that book is already checked out.");
+                    }
                 }
             }
             else if (userInput == "author")
@@ -74,7 +81,14 @@ namespace LibraryTerminal
                 if (validAuthor = Validator.BookAuthorValidator(bookList, userInput))
                 {
                     int bookKey = BookApp.FindBookByAuthor(bookList, userInput);
-                    bookList = BookApp.CheckOutBook(bookList, bookKey);
+                    if (bookList[bookKey].Status == true)
+                    {
+                        bookList = BookApp.CheckOutBook(bookList, bookKey);
+                    }
+                    else
+                    {
+                        Console.WriteLine("Sorry, that book is already checked out.");
+                    }
                 }
             }
             else { Console.WriteLine("Sorry, not valid"); }
@@ -112,6 +126,11 @@ namespace LibraryTerminal
 
             return bookList;
         }
+
+        //public static Dictionary<int, Book> AddBook(Dictionary<int, Book> bookList)
+        //{
+        //    Console.WriteLine("")
+        //}
 
         public static void EasterEgg()
         {
