@@ -24,18 +24,18 @@ namespace LibraryTerminal
         public static void DisplayBooks(Dictionary<int, Book> listOfBooks)
         {
             Console.WriteLine("");
-            Console.Write("{0,-30} {1,-20} {2,-10} {3,-10}\n", "Title", "Author", "On Shelf", "Due Date");
-            Console.Write("{0,-30} {0,-20} {0,-10} {0,-10}\n", "-----");
+            Console.Write("{0,-3} {1,-30} {2,-20} {3,-10} {4,-10}\n", " ", "Title", "Author", "On Shelf", "Due Date");
+            Console.Write("{0,-3} {1,-30} {1,-20} {1,-10} {1,-10}\n", " ", "-----");
 
             foreach (var book in listOfBooks)
             {
                 if (book.Value.DueDate == Convert.ToDateTime("01/01/1900"))
                 {
-                    Console.WriteLine("{0,-30} {1,-20} {2,-10}", book.Value.Title, book.Value.Author, book.Value.Status);
+                    Console.WriteLine("{0, -3} {1,-30} {2,-20} {3,-10}", book.Key + ".", book.Value.Title, book.Value.Author, book.Value.Status);
                 }
                 else
                 {
-                    Console.WriteLine("{0,-30} {1,-20} {2,-10} {3,-10}", book.Value.Title, book.Value.Author, book.Value.Status, book.Value.DueDate.ToString("d"));
+                    Console.WriteLine("{0, -3} {1,-30} {2,-20} {3,-10} {4,-10}", book.Key + ".", book.Value.Title, book.Value.Author, book.Value.Status, book.Value.DueDate.ToString("d"));
                 }
             }
         }

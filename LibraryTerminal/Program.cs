@@ -42,6 +42,9 @@ namespace LibraryTerminal
                     case 5:                                                             //return book
                         bookList = ProgramApp.ReturnBook(bookList);
                         break;
+                    case 6:
+                        ProgramApp.EasterEgg();
+                        break;
                     default:
                         Console.WriteLine("Sorry, that wasn't a valid choice.");
                         break;

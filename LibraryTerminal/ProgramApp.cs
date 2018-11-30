@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -89,19 +90,32 @@ namespace LibraryTerminal
             {
                 Console.Write("Enter title of the book: ");
                 userInput = Console.ReadLine();
-                int bookKey = BookApp.FindBookByTitle(bookList, userInput);
-                bookList = BookApp.ReturnBook(bookList, bookKey);
+                bool validTitle;
+                if (validTitle = Validator.BookTitleValidator(bookList, userInput))
+                {
+                    int bookKey = BookApp.FindBookByTitle(bookList, userInput);
+                    bookList = BookApp.ReturnBook(bookList, bookKey);
+                }
             }
             else if (userInput == "author")
             {
                 Console.Write("Enter author name: ");
                 userInput = Console.ReadLine();
-                int bookKey = BookApp.FindBookByAuthor(bookList, userInput);
-                bookList = BookApp.ReturnBook(bookList, bookKey);
+                bool validAuthor;
+                if (validAuthor = Validator.BookAuthorValidator(bookList, userInput))
+                {
+                    int bookKey = BookApp.FindBookByAuthor(bookList, userInput);
+                    bookList = BookApp.ReturnBook(bookList, bookKey);
+                }
             }
             else { Console.WriteLine("Sorry, not valid"); }
 
             return bookList;
+        }
+
+        public static void EasterEgg()
+        {
+            Process.Start("http://minesweeperonline.com/");
         }
 
     }
