@@ -32,7 +32,6 @@ namespace LibraryTerminal
 
                     libraryCollection.Add(line);
                 } while (line != null);
-
             }
             return libraryCollection;
         }
@@ -52,9 +51,5 @@ namespace LibraryTerminal
         {
             File.WriteAllLines(path, libraryList);
         }
-
-
-        //string sentence = "Title_Author_true_01/01/1900";
-        //string[] words = sentence.Split('_');
     }
 }

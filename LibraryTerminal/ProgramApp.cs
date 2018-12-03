@@ -11,14 +11,14 @@ namespace LibraryTerminal
     {
         public static Dictionary<int, Book> ActionFromList(Dictionary<int, Book> bookList)
         {
-            Console.WriteLine("Would you like to select a book? (y/n) ");
+            Console.Write("\nWould you like to select a book? (y/n) ");
             if(Validator.YesNoAnswer())
             {
                 bool validNumber = false;
                 int bookNum = 0;
                 while (validNumber == false)
                 {
-                    Console.WriteLine($"Please select a book 1 through {bookList.Count}: ");
+                    Console.Write($"Please select a book 1 through {bookList.Count}: ");
                     bool realNumber = int.TryParse(Console.ReadLine(), out bookNum);
                     if (realNumber == true && bookNum > 0 && bookNum <= bookList.Count)
                     {
@@ -183,10 +183,8 @@ namespace LibraryTerminal
                 bookList.Add(bookList.Count + 1, newBook);
 
             }
-            else
-            {
-                Console.WriteLine("No prob, please consider donating to the library at another time");
-            }
+            else {Console.WriteLine("No prob, please consider donating to the library at another time");}
+
             return bookList;
         }
 

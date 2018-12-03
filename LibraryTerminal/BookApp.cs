@@ -105,20 +105,20 @@ namespace LibraryTerminal
 
         public static Dictionary<int, Book> ReturnBook(Dictionary<int, Book> bookList, int bookNum)
         {
-            
+
             if (bookList[bookNum].DueDate != Convert.ToDateTime("01/01/1900"))
             {
-                    bookList[bookNum].Status = true;
-                    bookList[bookNum].DueDate = Convert.ToDateTime("01/01/1900");
-                    Console.WriteLine($"You returned {bookList[bookNum].Title}.");
+                bookList[bookNum].Status = true;
+                bookList[bookNum].DueDate = Convert.ToDateTime("01/01/1900");
+                Console.WriteLine($"You returned {bookList[bookNum].Title}.");
             }
             else
             {
                 Console.WriteLine("That book is already on the shelf.");
             }
-                return bookList;
-            } 
-
+            return bookList;
+        }
+    
         public static bool ContinueTheProgram()
         {
             bool keepGoing = true;

@@ -22,7 +22,6 @@ namespace LibraryTerminal
             while (keepGoing == true)
             {
                 BookApp.PrintMenu();
-
                 int menuChoice = Validator.MenuChoice();
 
                 switch (menuChoice)

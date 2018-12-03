@@ -12,13 +12,13 @@ namespace LibraryTerminal
         {
             Dictionary<int, Book> bookList = new Dictionary<int, Book>();
             int counter = 1;
+
             foreach (var item in bookListString)
             {
                 var book = new Book(GetBookTitle(item), GetBookAuthor(item), GetBookStatus(item), GetBookDueDate(item));
                 bookList.Add(counter, book);
                 counter++;
             }
-
             return bookList;
         }
 
@@ -38,7 +38,6 @@ namespace LibraryTerminal
             string[] _author = str.Split(separator);
             string author = _author[1];
             return author;
-
         }
 
         private static bool GetBookStatus(string bookEntry)
