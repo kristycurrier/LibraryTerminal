@@ -9,6 +9,42 @@ namespace LibraryTerminal
 {
     class ProgramApp
     {
+        public static Dictionary<int, Book> ActionFromList(Dictionary<int, Book> bookList)
+        {
+            Console.WriteLine("Would you like to select a book? (y/n) ");
+            if(Validator.YesNoAnswer())
+            {
+                bool validNumber = false;
+                int bookNum = 0;
+                while (validNumber == false)
+                {
+                    Console.WriteLine($"Please select a book 1 through {bookList.Count}: ");
+                    bool realNumber = int.TryParse(Console.ReadLine(), out bookNum);
+                    if (realNumber == true && bookNum > 0 && bookNum <= bookList.Count)
+                    {
+                        validNumber = true;
+                    }
+                }
+
+                if(bookList[bookNum].Status == true)
+                {
+                    Console.Write("Would you like to check that book out? (y/n) ");
+                    if (Validator.YesNoAnswer())
+                    {
+                        bookList = BookApp.CheckOutBook(bookList, bookNum);
+                    }
+                } else if (bookList[bookNum].Status == false)
+                {
+                    Console.Write("Would you like to return that book? (y/n) ");
+                    if (Validator.YesNoAnswer())
+                    {
+                        bookList = BookApp.ReturnBook(bookList, bookNum);
+                    }
+                }
+            }
+            return bookList;
+        }
+
         public static Dictionary<int, Book> SearchByAuthor(Dictionary<int, Book> bookList)
         {
             Console.Write("Enter author name: ");
@@ -41,7 +77,7 @@ namespace LibraryTerminal
                 bool onShelf = BookApp.DisplayBook(bookList, bookKey);
                 if (onShelf)
                 {
-                    Console.WriteLine("Would you like to check that book out? (y/n)");
+                    Console.Write("Would you like to check that book out? (y/n) ");
                     if (Validator.YesNoAnswer())
                     {
                         bookList = BookApp.CheckOutBook(bookList, bookKey);
