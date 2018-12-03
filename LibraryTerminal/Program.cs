@@ -29,6 +29,7 @@ namespace LibraryTerminal
                 {
                     case 1:                                                             //Display book list
                         BookApp.DisplayBooks(bookList);
+                        bookList = ProgramApp.ActionFromList(bookList);
                         break;
                     case 2:                                                             //Search by author
                         bookList = ProgramApp.SearchByAuthor(bookList);
