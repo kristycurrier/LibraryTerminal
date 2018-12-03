@@ -59,7 +59,6 @@ namespace LibraryTerminal
             }
             return menuNum;
         }
-        //create 2 functions that takes in the user input is a title / author, return bool if it is in the list
 
         public static bool BookTitleValidator(Dictionary<int, Book> listOfBooks, string userInput)
         {
@@ -112,6 +111,7 @@ namespace LibraryTerminal
             bool keepGoing = true;
             bool validInput = false;
             string userInput = Console.ReadLine();
+
             while (validInput == false)
             {
                 if (userInput.Equals("y", StringComparison.OrdinalIgnoreCase))
@@ -124,7 +124,8 @@ namespace LibraryTerminal
                     keepGoing = false;
                     validInput = true;
                 }
-                else {
+                else
+                {
                     Console.Write("Enter y for yes or n for no: ");
                     userInput = Console.ReadLine();
                 }
@@ -151,7 +152,7 @@ namespace LibraryTerminal
                 Console.Write("Sorry not a valid title, please enter a valid title: ");
                 userInput = Console.ReadLine();
             }
-                return userInput;
+            return userInput;
         }
 
         public static string NewBookAuthorValidator()
@@ -175,6 +176,5 @@ namespace LibraryTerminal
             }
             return userInput;
         }
-
     }
 }
