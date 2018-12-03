@@ -28,14 +28,14 @@ namespace LibraryTerminal
 
                 if(bookList[bookNum].Status == true)
                 {
-                    Console.Write("Would you like to check that book out? (y/n) ");
+                    Console.Write($"Would you like to check {bookList[bookNum].Title} out? (y/n) ");
                     if (Validator.YesNoAnswer())
                     {
                         bookList = BookApp.CheckOutBook(bookList, bookNum);
                     }
                 } else if (bookList[bookNum].Status == false)
                 {
-                    Console.Write("Would you like to return that book? (y/n) ");
+                    Console.Write($"Would you like to return {bookList[bookNum].Title}? (y/n) ");
                     if (Validator.YesNoAnswer())
                     {
                         bookList = BookApp.ReturnBook(bookList, bookNum);
